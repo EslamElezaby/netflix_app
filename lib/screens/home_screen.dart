@@ -7,45 +7,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Color(0xff333333),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black38,
-        currentIndex: 0,
-        elevation: 0.0,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.tv,
-            ),
-            label: 'Coming Soon',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.download_done_outlined,
-            ),
-            label: 'Downloads',
-          ),
-        ],
-      ),
       body: SafeArea(
         child: Stack(
           children: [
