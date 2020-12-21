@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class CompletedDownloadsContainer extends StatelessWidget {
-  const CompletedDownloadsContainer({
+class BuildInprogressDownload extends StatelessWidget {
+  const BuildInprogressDownload({
     Key key,
     @required this.screenWidth,
     @required this.screenHeight,
@@ -14,15 +15,16 @@ class CompletedDownloadsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: screenWidth,
-      height: screenHeight * 0.2,
+      height: screenHeight * 0.1,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
+              // movie cover
               Container(
-                width: screenWidth * 0.3,
-                height: screenHeight * 0.2,
+                width: screenWidth * 0.2,
+                height: screenHeight * 0.1,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
@@ -33,9 +35,11 @@ class CompletedDownloadsContainer extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 10),
+              // movie detials
               Column(
                 mainAxisAlignment:
                     MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Honest Thief',
@@ -52,15 +56,32 @@ class CompletedDownloadsContainer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
+                  Text(
+                    'Downloading...',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 14,
+                    ),
+                  ),
                 ],
               ),
             ],
           ),
-          Icon(
-            Icons.play_arrow,
-            color: Colors.white,
-            size: 35,
-          )
+          // Download progress
+          CircularPercentIndicator(
+            radius: 70,
+            lineWidth: 5,
+            animation: true,
+            percent: 0.5,
+            center: Text(
+              '50 %',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            circularStrokeCap: CircularStrokeCap.square,
+            progressColor: Colors.blue,
+          ),
         ],
       ),
     );

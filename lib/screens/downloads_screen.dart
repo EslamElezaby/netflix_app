@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app_ui/screens/downloads_screen/completed_downloads.dart';
+import 'package:netflix_app_ui/screens/downloads_screen/local_widgets/completed_downloads.dart';
+import 'package:netflix_app_ui/screens/downloads_screen/local_widgets/inprogress_downloads.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class DownloadsScreen extends StatelessWidget {
   @override
@@ -72,12 +74,22 @@ class DownloadsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     // Completed Downolads List
-                    CompletedDownloadsContainer(screenWidth: screenWidth, screenHeight: screenHeight),
+                    CompletedDownloadsContainer(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
                     SizedBox(height: 10),
-                    CompletedDownloadsContainer(screenWidth: screenWidth, screenHeight: screenHeight),
+                    CompletedDownloadsContainer(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
                     SizedBox(height: 10),
-                    CompletedDownloadsContainer(screenWidth: screenWidth, screenHeight: screenHeight),
+                    CompletedDownloadsContainer(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
                     // Inprogress Downloads
+                    SizedBox(height: 10),
                     Text(
                       'Inprogress Downloads',
                       style: TextStyle(
@@ -86,7 +98,17 @@ class DownloadsScreen extends StatelessWidget {
                         fontSize: 20,
                       ),
                     ),
+                    SizedBox(height: 10),
                     // Inprogress Downloads List
+                    BuildInprogressDownload(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
+                    SizedBox(height: 10),
+                    BuildInprogressDownload(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
                   ],
                 ),
               ),
