@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_app_ui/screens/downloads_screen/local_widgets/completed_downloads.dart';
 import 'package:netflix_app_ui/screens/downloads_screen/local_widgets/inprogress_downloads.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class DownloadsScreen extends StatelessWidget {
   @override

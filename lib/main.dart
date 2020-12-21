@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app_ui/screens/downloads_screen.dart';
-import 'package:netflix_app_ui/screens/home_screen.dart';
+import 'package:netflix_app_ui/screens/coming_soon/coming_soon.dart';
+import 'package:netflix_app_ui/screens/downloads_screen/downloads_screen.dart';
+import 'package:netflix_app_ui/screens/home_screen/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,9 +41,7 @@ class _MainScreenState extends State<MainScreen> {
     Center(
       child: Text('Search Screen'),
     ),
-    Center(
-      child: Text('Coming Soon Screen'),
-    ),
+    ComingSoonScreen(),
     DownloadsScreen(),
     Center(
       child: Text('Menu Screen'),
