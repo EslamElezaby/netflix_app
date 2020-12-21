@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_app_ui/models/data_model.dart';
+import 'package:netflix_app_ui/screens/movie_screen/movie_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -123,11 +124,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: MoviesPreview.moviePreviewList.length,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.only(right: 5),
-                      child: CircleAvatar(
-                        maxRadius: 75,
-                        backgroundImage: AssetImage(
-                          MoviesPreview.moviePreviewList[index].movieCover,
+                      child: InkWell(
+                        child: CircleAvatar(
+                          maxRadius: 75,
+                          backgroundImage: AssetImage(
+                            MoviesPreview.moviePreviewList[index].movieCover,
+                          ),
                         ),
+                        onTap: () {
+                          return showBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return MovieScreenPreview();
+                            },
+                          );
+                        },
                       ),
                     ),
                   ),
