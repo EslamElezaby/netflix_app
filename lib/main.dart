@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_app_ui/screens/coming_soon/coming_soon.dart';
 import 'package:netflix_app_ui/screens/downloads_screen/downloads_screen.dart';
 import 'package:netflix_app_ui/screens/home_screen/home_screen.dart';
+import 'package:netflix_app_ui/screens/search_screen/search_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,9 +39,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> screens = [
     HomeScreen(),
-    Center(
-      child: Text('Search Screen'),
-    ),
+    SearchScreen(),
     ComingSoonScreen(),
     DownloadsScreen(),
     Center(
