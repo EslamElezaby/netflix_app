@@ -16,6 +16,7 @@ class _MenuScreenState extends State<MenuScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Profile part
               Container(
@@ -87,7 +88,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 height: 5,
               ),
               SizedBox(height: 10),
-              // Options
+              // Dark Mode
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -95,6 +96,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     'Dark Mode',
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 17,
                     ),
                   ),
                   Switch(
@@ -107,10 +109,79 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 20),
+              // Languages
+              buildCard('Language'),
+
+              SizedBox(height: 20),
+              // Subscription
+              buildOptionRow(title: 'Subscription', option: 'Monthly'),
+              SizedBox(height: 20),
+              // History
+              buildOptionRow(title: 'History', option: 'Clear'),
+              SizedBox(height: 20),
+              // Your Data in Netflix
+              buildOptionRow(
+                  title: 'Your Data in Netflix', option: 'More Details'),
+
+              SizedBox(height: 20),
+              // Your Time in NetFlix
+              buildOptionRow(title: 'Help', option: 'Connect Us'),
+              SizedBox(height: 20),
+              buildCard(),
+              Text(
+                'Delete Account',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildCard(String cardTitle) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.07,
+      child: Card(
+        elevation: 0.1,
+        child: Center(
+          child: Text(
+            cardTitle,
+            textAlign: TextAlign.start,
+            style: TextStyle(
+                color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+        ),
+        color: Color(0xff30475e),
+      ),
+    );
+  }
+
+  Row buildOptionRow({String title, String option}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+          ),
+        ),
+        Text(
+          option,
+          style: TextStyle(
+            color: Colors.lightBlueAccent,
+            fontSize: 14,
+          ),
+        ),
+      ],
     );
   }
 }
