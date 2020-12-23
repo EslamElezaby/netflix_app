@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:netflix_app_ui/models/data_model.dart';
 import 'package:netflix_app_ui/screens/movie_screen/movie_screen.dart';
@@ -12,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Color(0xff333333),
       body: SafeArea(
@@ -119,30 +119,65 @@ class _HomeScreenState extends State<HomeScreen> {
                 // List of Movies to preview
                 Container(
                   height: screenHeight * 0.2,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: MoviesPreview.moviePreviewList.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(right: 5),
-                      child: InkWell(
-                        child: CircleAvatar(
-                          maxRadius: 75,
-                          backgroundImage: AssetImage(
-                            MoviesPreview.moviePreviewList[index].movieCover,
-                          ),
-                        ),
-                        onTap: () {
-                          return showBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return MovieScreenPreview();
+                  child: FutureBuilder(
+                    future: DefaultAssetBundle.of(context)
+                        .loadString('assets/data/popular_movie_data.json'),
+                    builder: (context, snapshot) {
+                      var newData = jsonDecode(snapshot.data.toString());
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: newData == null ? 0 : newData.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: CircleAvatar(
+                                maxRadius: 75,
+                                backgroundImage: NetworkImage(
+                                  newData[index]['cover_url'],
+                                ),
+                              ),
+                            ),
+                            onTap: () {
+                              return showBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return MovieScreenPreview();
+                                },
+                              );
                             },
                           );
                         },
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ),
+                // Container(
+                //   height: screenHeight * 0.2,
+                //   child: ListView.builder(
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: MoviesPreview.moviePreviewList.length,
+                //     itemBuilder: (context, index) => Padding(
+                //       padding: const EdgeInsets.only(right: 5),
+                //       child: InkWell(
+                //         child: CircleAvatar(
+                //           maxRadius: 75,
+                //           backgroundImage: AssetImage(
+                //             MoviesPreview.moviePreviewList[index].movieCover,
+                //           ),
+                //         ),
+                //         onTap: () {
+                //           return showBottomSheet(
+                //             context: context,
+                //             builder: (context) {
+                //               return MovieScreenPreview();
+                //             },
+                //           );
+                //         },
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 // Popualr on NetFlix
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 15),

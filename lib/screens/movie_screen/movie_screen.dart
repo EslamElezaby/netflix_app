@@ -53,6 +53,7 @@ class MovieScreenPreview extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                // Watch Now
                 Text(
                   'Watch Now',
                   style: TextStyle(

@@ -34,24 +34,23 @@ class MovieModel {
             'strategically removes every obstacle ',
     ),
      MovieModel(
-      movieName: 'Walker',
+      movieName: 'Bloodshot',
       moviePicUrl:
-          'https://m.media-amazon.com/images/M/MV5BNDBmNTBkOWItMjRiZi00YjliLWFlODktMTgwODZlY2I4YTIxXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
+          'https://i2.wp.com/teaser-trailer.com/wp-content/uploads/Bloodshot-International-poster.jpg?ssl=1',
       movieDescription:
-          'Thirteen Reasons Why, based on the best-selling books by Jay Asher, follows teenager Clay Jensen (Dylan Minnette) as'
-          'he returns home from school to find a mysterious box with his name on it lying on his porch. Inside he discovers'
-          'a group of cassette tapes recorded by Hannah Baker (Katherine Langford) -his classmate and crush-who tragically'
-          'committed suicide two weeks earlier. On tape, Hannah unfolds an emotional audio diary, detailing the thirteen ',
+          'Ray Garrison, an elite soldier who was killed in battle, is brought back to life'
+          ' by an advanced technology that gives him the ability'
+           ' of super human strength and fast healing. With his new abilities',
     ),
      MovieModel(
-      movieName: '13 Reason Why Season 3',
+      movieName: 'Bad Boys for Life',
       moviePicUrl:
-          'https://mp3skull.shop/wp-content/uploads/2019/08/13-Reasons-Why-Season-3.jpg',
+          'https://upload.wikimedia.org/wikipedia/en/9/90/Bad_Boys_for_Life_poster.jpg',
       movieDescription:
-          'Thirteen Reasons Why, based on the best-selling books by Jay Asher, follows teenager Clay Jensen (Dylan Minnette) as'
-          'he returns home from school to find a mysterious box with his name on it lying on his porch. Inside he discovers'
-          'a group of cassette tapes recorded by Hannah Baker (Katherine Langford) -his classmate and crush-who tragically'
-          'committed suicide two weeks earlier. On tape, Hannah unfolds an emotional audio diary, detailing the thirteen ',
+          'Marcus and Mike have to confront new issues (career changes and midlife crises),'
+           'as they join the newly created elite team AMMO'
+          'of the Miami police department to take down the ruthless'
+           'Armando Armas, the vicious leader of a Miami drug cartel',
     ),
      MovieModel(
       movieName: '13 Reason Why Season 3',
