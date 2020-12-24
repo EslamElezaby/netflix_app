@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: screenHeight * 0.2,
                   child: FutureBuilder(
                     future: DefaultAssetBundle.of(context)
-                        .loadString('assets/data/popular_movie_data.json'),
+                        .loadString('assets/data/data.json'),
                     builder: (context, snapshot) {
                       var newData = jsonDecode(snapshot.data.toString());
                       return ListView.builder(
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: CircleAvatar(
                                 maxRadius: 75,
                                 backgroundImage: NetworkImage(
-                                  newData[index]['cover_url'],
+                                  newData[index]['Poster'],
                                 ),
                               ),
                             ),
@@ -152,32 +152,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-                // Container(
-                //   height: screenHeight * 0.2,
-                //   child: ListView.builder(
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: MoviesPreview.moviePreviewList.length,
-                //     itemBuilder: (context, index) => Padding(
-                //       padding: const EdgeInsets.only(right: 5),
-                //       child: InkWell(
-                //         child: CircleAvatar(
-                //           maxRadius: 75,
-                //           backgroundImage: AssetImage(
-                //             MoviesPreview.moviePreviewList[index].movieCover,
-                //           ),
-                //         ),
-                //         onTap: () {
-                //           return showBottomSheet(
-                //             context: context,
-                //             builder: (context) {
-                //               return MovieScreenPreview();
-                //             },
-                //           );
-                //         },
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 // Popualr on NetFlix
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 15),
