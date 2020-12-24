@@ -90,7 +90,7 @@ class DownloadsScreen extends StatelessWidget {
                     // Inprogress Downloads
                     SizedBox(height: 10),
                     Text(
-                      'Inprogress Downloads',
+                      'In progress Downloads',
                       style: TextStyle(
                         color: Colors.white70,
                         fontWeight: FontWeight.bold,

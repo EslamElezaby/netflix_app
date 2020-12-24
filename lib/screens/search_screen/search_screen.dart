@@ -1,5 +1,5 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:netflix_app_ui/models/movie_model.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
@@ -29,20 +29,19 @@ class SearchScreen extends StatelessWidget {
                 // Movies
                 buildTitle('Movies'),
                 // List of Movies
-                BuildListOfItems(),
+                BuildListOfItems(type: 'movie'),
                 // TV Shows
-                buildTitle('Series'),
+                buildTitle('TV Shows'),
                 // List of series
-                BuildListOfItems(),
+                BuildListOfItems(type: 'series'),
                 // Anime
                 buildTitle('Anime'),
                 // List of Anime
-                BuildListOfItems(),
+                BuildListOfItems(type: 'movie'),
                 // Talk Shows
                 buildTitle('Talk Shows'),
                 // List of Talk Shows
-                BuildListOfItems(),
-
+                BuildListOfItems(type: 'series'),
               ],
             ),
           ),
@@ -67,36 +66,48 @@ class SearchScreen extends StatelessWidget {
 }
 
 class BuildListOfItems extends StatelessWidget {
+  final String type;
   const BuildListOfItems({
-    Key key,
-  }) : super(key: key);
+    this.type,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: MovieModel.movieModelList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    MovieModel.movieModelList[index].moviePicUrl,
+    return FutureBuilder(
+      future:
+          DefaultAssetBundle.of(context).loadString('assets/data/data.json'),
+      builder: (context, snapshot) {
+        var newData = jsonDecode(snapshot.data.toString());
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.3,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: newData == null ? 0 : newData.length,
+            itemBuilder: (context, index) {
+              if (newData[index]['Type'] == type) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          newData[index]['Poster'],
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
+        );
+      },
     );
   }
 }
